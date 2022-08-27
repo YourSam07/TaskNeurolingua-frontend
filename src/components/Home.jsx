@@ -16,11 +16,11 @@ const Home = () => {
   const ref = useRef()
   const navigate = useNavigate()
   const [{ currentUser, setCurrentUser }] = useContext(UserContext)
-  const submit = (e) => {
-    e.preventDefault()
-    console.log(currentUser)
-    navigate('/certificate')
-  }
+  // const submit = (e) => {
+  //   e.preventDefault()
+  //   console.log(currentUser)
+  //   navigate('/certificate')
+  // }
 
   // const first = (toPdf) => {  }
 
@@ -28,7 +28,7 @@ const Home = () => {
     <div className="container flex flex-col items-center justify-center min-h-screen">
       <div className="text-3xl text-black font-bold text-center mb-6">NeuroLingua</div>
       <div className="wrapper rounded-lg shadow-md bg-slate-100 p-8 w-1/4">
-        <form onSubmit={(e) => submit(e)} className='flex flex-col'>
+        <form className='flex flex-col'>
           <input type="text" name="fname" placeholder='Enter your Full Name' onChange={(e) => setCurrentUser({ ...currentUser, name: e.target.value })} className='w-full py-2 px-4 rounded-lg focus:outline-slate-300 placeholder:text-slate-400 text-slate-400 mb-4' />
           <input type="email" name="email" placeholder='Enter your Email ID' onChange={(e) => setCurrentUser({ ...currentUser, email: e.target.value })} className='w-full py-2 px-4 rounded-lg focus:outline-slate-300 placeholder:text-slate-400 text-slate-400 mb-4' />
           <label className='text-slate-400 mb-2'>Select Course</label>
@@ -52,11 +52,15 @@ const Home = () => {
             <option value="Italian">Italian</option>
             <option value="Russian">Russian</option>
           </select>
-          <button type="submit" className='bg-blue-600 text-white text-center py-2 hover:bg-blue-400 rounded-lg'>Download</button>
+
+          {/* <button type="submit" className='bg-blue-600 text-white text-center py-2 hover:bg-blue-400 rounded-lg'>Download</button> */}
         </form>
+        <PDF targetRef={ref} filename='certificate.pdf' options={options}>
+          {({ toPdf }) => <button onClick={toPdf} className='bg-blue-600 items-end w-full text-white text-center py-2 px-4 hover:bg-blue-400 rounded-lg'>Download</button>}
+        </PDF>
       </div>
 
-      <div className="certificate mb-8 hidden" ref={ref}>
+      <div className="certificate mb-8 opacity-0 absolute -z-30" ref={ref}>
         <div className="container shadow-xl bg-orange-500 w-[1000px] h-[600px] p-1">
           <div className="innerBorder1 bg-white w-full h-full p-1">
             <div className="innerBorder2  bg-orange-500 w-full h-full p-8">
@@ -94,9 +98,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <PDF targetRef={ref} filename='certificate.pdf' options={options}>
-        {({ toPdf }) => <button onClick={toPdf} className='bg-blue-600 items-end text-white text-center py-2 px-4 hover:bg-blue-400 rounded-lg'>Download</button>}
-      </PDF>
+
     </div>
   )
 }
