@@ -4,7 +4,7 @@ import { UserContext } from '../Contexts/UserContext'
 import sign from "../Assets/sign1.png"
 import sign2 from "../Assets/sign2.png"
 
-const ref = createRef()
+const ref =  createRef()
 const options = {
   orientation: "landscape",
   unit: "in",
@@ -53,9 +53,9 @@ const Certificate = () => {
           </div>
         </div>
       </div>
-      <PDF targetRef={ref} filename='certificate.pdf' options={options}>
+      {/* <PDF targetRef={ref} filename='certificate.pdf' options={options}>
         {({toPdf}) => <button onClick={toPdf} className='bg-blue-600 items-end text-white text-center py-2 px-4 hover:bg-blue-400 rounded-lg'>Download</button>}
-      </PDF>
+      </PDF> */}
     </div>
     
   )
