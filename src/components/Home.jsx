@@ -20,6 +20,7 @@ const Home = () => {
           <input type="email" name="email" placeholder='Enter your Email ID' onChange={(e) => setCurrentUser({...currentUser, email: e.target.value})} className='w-full py-2 px-4 rounded-lg focus:outline-slate-300 placeholder:text-slate-400 text-slate-400 mb-4' />
           <label className='text-slate-400 mb-2'>Select Course</label>
           <select name="course" onChange={(e) => setCurrentUser({...currentUser, course: e.target.value})} className='mb-4 text-slate-400 py-2 px-4 rounded-lg focus:outline-slate-300'>
+            <option value="">Courses</option>
             <option value="Zero to Hero">Zero to Hero</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
@@ -27,6 +28,7 @@ const Home = () => {
           </select>
           <label className='text-slate-400 mb-2'>Select Language</label>
           <select name="lang" onChange={(e) => setCurrentUser({...currentUser, lang: e.target.value})} className='mb-4 text-slate-400 py-2 px-4 rounded-lg focus:outline-slate-300'>
+            <option value="">Languages</option>
             <option value="English">English</option>
             <option value="Hindi">Hindi</option>
             <option value="French">French</option>
