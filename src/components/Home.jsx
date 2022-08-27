@@ -8,7 +8,7 @@ const Home = () => {
   const submit = (e) => {
     e.preventDefault()
     console.log(currentUser)
-    navigate('/course')
+    navigate('/certificate')
   }
 
   return (
